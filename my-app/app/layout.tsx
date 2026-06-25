@@ -15,10 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* flex-col and min-h-screen force the footer to stay at the bottom */}
+
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
         
-        {/* Simple Header */}
         <header className="bg-white p-4 shadow-sm border-b border-slate-100">
           <div className="mx-auto max-w-4xl flex justify-between items-center">
 
@@ -29,6 +28,11 @@ export default function RootLayout({
                   <nav className="space-x-4 text-sm font-medium">
               <a href="/" className="hover:text-blue-600 text-black">Home</a>
               <a href="/recipes" className="hover:text-blue-600 text-black">Menu</a>
+              <a href="/contact" className="hover:text-blue-600 text-black">Contact</a>
+
+
+
+
             </nav>
           </div>
         </header>

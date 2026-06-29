@@ -38,11 +38,11 @@ export default function RecipeCard({
       <img
         src={imageUrl}
         alt={title}
-        className="mb-4 h-48 w-full rounded-lg object-cover"
+        className="mb-4 h-50 w-80 rounded-lg object-cover"
       />
 
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-xl font-bold text-black">{title}</h2>
 
         <span
           className={`rounded-full px-3 py-1 text-sm font-medium text-white ${
@@ -54,6 +54,10 @@ export default function RecipeCard({
           {status}
         </span>
       </div>
+
+      <p className="text-gray-600">
+        ID: {id}
+      </p>
 
       <p className="mt-2 text-gray-600">
         Publisher: {publisher}
@@ -69,7 +73,7 @@ export default function RecipeCard({
 
       {notes && (
         <div className="mt-3 rounded bg-gray-100 p-2">
-          <p className="text-sm">
+          <p className="text-black">
             <strong>Notes:</strong> {notes}
           </p>
         </div>
@@ -90,7 +94,10 @@ export default function RecipeCard({
       </div>
 
       <button
-        onClick={() => onFavorite(id)}
+        onClick={() => {
+          console.log("Faviorires Pressed", id);
+          onFavorite(id)
+        }}
         className="mt-4 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
       >
         Favorite

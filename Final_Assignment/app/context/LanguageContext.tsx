@@ -13,6 +13,7 @@ type Lang = "en" | "ar";
 const dictionary = {
   en: {
     home: "Home",
+    recipeCard: "Recipe Card",
     recipes: "Recipes",
     submitted: "Submitted",
     favorites: "Favorites",
@@ -23,6 +24,7 @@ const dictionary = {
   },
   ar: {
     home: "الرئيسية",
+    recipeCard: "البطاقات",
     recipes: "الوصفات",
     submitted: "المحفوظات",
     favorites: "المفضلة",

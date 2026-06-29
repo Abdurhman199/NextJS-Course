@@ -1,31 +1,35 @@
-"use client";
+// hooks/useFavorites.ts
+'use client';
 
-import { useContext } from "react";
-import { FavoritesContext } from "../context/FavoritesContext";
+import { useCallback } from 'react';
+import { useLocalStorage } from './useLocalStorage';
+
+interface SavedRecipe {
+  id: string;
+  title: string;
+}
 
 export function useFavorites() {
-  const context = useContext(FavoritesContext);
+  const [favorites, setFavorites] = useLocalStorage<SavedRecipe[]>(
+    'recipe-favorites',
+    []
+  );
 
-  if (!context) {
-    throw new Error("useFavorites must be used within FavoritesProvider");
-  }
+  const addFavorite = useCallback((recipe: SavedRecipe) => {
+    setFavorites(prev => {
+      if (prev.some(f => f.id === recipe.id)) return prev; // prevent duplicates
+      return [...prev, recipe];
+    });
+  }, [setFavorites]);
 
-  const {
-    favorites,
-    addFavorite,
-    removeFavorite,
-    toggleFavorite,
-  } = context;
+  const removeFavorite = useCallback((id: string) => {
+    setFavorites(prev => prev.filter(f => f.id !== id));
+  }, [setFavorites]);
 
-  const isFavorite = (id: string) => {
-    return favorites.includes(id);
-  };
+  const isFavorite = useCallback(
+    (id: string) => favorites.some(f => f.id === id),
+    [favorites]
+  );
 
-  return {
-    favorites,
-    addFavorite,
-    removeFavorite,
-    toggleFavorite,
-    isFavorite,
-  };
+  return { favorites, addFavorite, removeFavorite, isFavorite };
 }

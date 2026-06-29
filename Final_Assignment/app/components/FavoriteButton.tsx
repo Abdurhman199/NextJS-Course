@@ -1,22 +1,22 @@
-"use client";
+// components/FavoriteButton.tsx
+'use client';
 
-import { useFavorites } from "../context/FavoritesContext";
+import { useFavorites } from '../hooks/useFavorites';
 
-export default function FavoriteButton({ id }: { id: string }) {
-  const { favorites, toggleFavorite } = useFavorites();
-
-  const isFavorite = favorites.includes(id);
+export function FavoriteButton({ id, title }: { id: string; title: string }) {
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const favorited = isFavorite(id);
 
   return (
     <button
-      onClick={() => toggleFavorite(id)}
-      className={`px-4 py-2 rounded ${
-        isFavorite
-          ? "bg-green-600 text-white"
-          : "bg-gray-200 dark:bg-gray-700"
+      onClick={() =>
+        favorited ? removeFavorite(id) : addFavorite({ id, title })
+      }
+      className={`px-3 py-1.5 rounded text-xs font-semibold ${
+        favorited ? 'bg-amber-500 text-white' : 'bg-neutral-100 text-neutral-700'
       }`}
     >
-      {isFavorite ? "Saved" : "Save"}
+      {favorited ? 'Saved' : 'Save recipe'}
     </button>
   );
 }

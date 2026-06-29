@@ -16,6 +16,7 @@ export default function NavBar() {
         <Link href="/recipes/new">{t("newRecipe")}</Link>
         <Link href="/recipes/submitted">{t("submitted")}</Link>
         <Link href="/favorites">{t("favorites")}</Link>
+        <Link href="/recipe-card">{t("recipeCard")}</Link>
         <Link href="/contact">{t("contact")}</Link>
       </nav>
 

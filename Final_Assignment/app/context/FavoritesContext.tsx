@@ -10,7 +10,10 @@ type FavoritesContextType = {
   toggleFavorite: (id: string) => void;
 };
 
-export const FavoritesContext = createContext<FavoritesContextType | null>(null);
+
+
+
+      export const FavoritesContext = createContext<FavoritesContextType | null>(null);
 export function FavoritesProvider({
   children,
 }: {
@@ -37,6 +40,7 @@ export function FavoritesProvider({
     );
   };
 
+  
   return (
     <FavoritesContext.Provider
       value={{ favorites, addFavorite, removeFavorite, toggleFavorite }}

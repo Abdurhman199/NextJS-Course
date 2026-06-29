@@ -5,8 +5,7 @@ export default async function RecipeDetailPage({ params }: {
 }) {
   const { id } = await params;
 
-    await new Promise((r) => setTimeout(r, 2000));
-
+  await new Promise((r) => setTimeout(r, 2000));
   const response = await fetch(`https://forkify-api.jonas.io/api/v2/recipes/${id}`);
   
   if (response.status === 404 || response.status === 400) {

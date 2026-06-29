@@ -34,7 +34,8 @@ export default function RecipeCardPage() {
         status="available"
         notes="Great for Lanch!"
         onFavorite={toggleFavorite}
-        
+
+
       />
       </div>
     </main>
